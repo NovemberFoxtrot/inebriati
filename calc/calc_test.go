@@ -4,6 +4,10 @@ import (
 	"testing"
 )
 
-func TestDrinks(t *testing.T) {
-	t.Errorf("Arg")
+func TestNew(t *testing.T) {
+	c := New(0.0, 0.0, 0.0, "male")
+
+	if c.String() != "0e+00" {
+		t.Errorf("%s", c.String())
+	}
 }

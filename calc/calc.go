@@ -20,6 +20,10 @@ type stats struct {
 	EstimatedBloodEthanolConcentration float64
 }
 
+func New(sd, bwkg, dph float64, g string) *stats {
+	return &stats{sd, bwkg, dph, g, 0.0}
+}
+
 func (s *stats) calc() float64 {
 	bodyWater := BodyWaterMen
 
@@ -32,5 +36,5 @@ func (s *stats) calc() float64 {
 }
 
 func (s *stats) String() string {
-	return strconv.FormatFloat(s.EstimatedBloodEthanolConcentration, 'e', -1, 10) //+ "g/dL" + s.Gender
+	return strconv.FormatFloat(s.EstimatedBloodEthanolConcentration, 'e', -1, 32) //+ "g/dL" + s.Gender
 }
