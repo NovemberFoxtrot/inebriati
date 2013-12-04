@@ -17,6 +17,7 @@ func main() {
 	flag.Parse()
 
 	i := inebriati.New(*StandardDrinks,*BodyWightKiloGrams,*DrinkingPeriod,*Gender)
-	EstimatedBloodEthanolConcentration := i.Calc()
+	i.Calc()
+
 	fmt.Println(i)
 }
