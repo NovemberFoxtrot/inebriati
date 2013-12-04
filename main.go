@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gitbub.com/NovemberFoxtrot/inebriati"
 )
 
 var (
