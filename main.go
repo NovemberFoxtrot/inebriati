@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/NovemberFoxtrot/inebriati"
+	"github.com/NovemberFoxtrot/inebriati/calc"
 )
 
 var (
