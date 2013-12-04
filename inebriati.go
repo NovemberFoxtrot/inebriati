@@ -20,9 +20,7 @@ var (
 	Gender              = flag.String("gender", "male", "Specify male or female")
 )
 
-func main() {
-	flag.Parse()
-
+func calc() float64 {
 	var EstimatedBloodEthanolConcentration float64
 
 	if *Gender == "male" {
@@ -30,7 +28,15 @@ func main() {
 	} else {
 		*Gender = "female"
 		EstimatedBloodEthanolConcentration = ((BodyWaterInTheBlood * *StandardDrinks * GramsToSwedishStandards) / (BodyWaterWomen * *BodyWeightKiloGrams)) - (Metabolism * *DrinkingPeriodHours)
-	}
+	}	
+
+	return EstimatedBloodEthanolConcentration
+}
+
+func main() {
+	flag.Parse()
+
+	EstimatedBloodEthanolConcentration := calc()
 
 	fmt.Println(EstimatedBloodEthanolConcentration, "g/dL", *Gender)
 }
