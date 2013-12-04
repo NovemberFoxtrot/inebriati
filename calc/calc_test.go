@@ -21,6 +21,7 @@ func TestCalc(t *testing.T) {
 		out string
 	}{
 		{stats{0.0, 0.0, 0.0, "male", 0.0}, "0e+00"},
+		{stats{0.0, 0.0, 0.0, "female", 0.0}, "0e+00"},
 	}
 
 	for _, person := range test {
