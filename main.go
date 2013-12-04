@@ -16,8 +16,8 @@ var (
 func main() {
 	flag.Parse()
 
-	i := inebriati.New(*StandardDrinks,*BodyWightKiloGrams,*DrinkingPeriod,*Gender)
-	i.Calc()
+	c := calc.New(*StandardDrinks,*BodyWightKiloGrams,*DrinkingPeriod,*Gender)
+	c.Calc()
 
 	fmt.Println(i)
 }
