@@ -21,16 +21,16 @@ var (
 )
 
 func calc() float64 {
-	var EstimatedBloodEthanolConcentration float64
+	var bodyWater float64
 
 	if *Gender == "male" {
-		EstimatedBloodEthanolConcentration = ((BodyWaterInTheBlood * *StandardDrinks * GramsToSwedishStandards) / (BodyWaterMen * *BodyWeightKiloGrams)) - (Metabolism * *DrinkingPeriodHours)
+		bodyWater = BodyWaterMen
 	} else {
+		bodyWater = BodyWaterWomen
 		*Gender = "female"
-		EstimatedBloodEthanolConcentration = ((BodyWaterInTheBlood * *StandardDrinks * GramsToSwedishStandards) / (BodyWaterWomen * *BodyWeightKiloGrams)) - (Metabolism * *DrinkingPeriodHours)
-	}	
+	}
 
-	return EstimatedBloodEthanolConcentration
+	return ((BodyWaterInTheBlood * *StandardDrinks * GramsToSwedishStandards) / (bodyWater * *BodyWeightKiloGrams)) - (Metabolism * *DrinkingPeriodHours)
 }
 
 func main() {
