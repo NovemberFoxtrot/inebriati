@@ -12,6 +12,25 @@ func main() {
 	hours := flag.Float64("hours", 2.0, "How many hours it took to drink")
 	gender := flag.String("gender", "male", "Specify male or female")
 
+	flag.Usage = func() {
+		fmt.Println(`
+  NAME:
+
+    inebriati
+
+  DESCRIPTION:
+
+    Calculates estimated blood ethanol concentration (EBAC) 
+
+  COMMANDS:
+
+    -drinks              Number of standard drinks comsumed.
+    -weight              Weight in kiligrams.
+    -hours               Drinking period in hours.
+    -gender              Select male or female.
+`[1:])
+	}
+
 	flag.Parse()
 
 	i := inebriati.New(*drinks, *weight, *hours, *gender)
