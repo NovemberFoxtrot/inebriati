@@ -8,7 +8,7 @@ const (
 	BodyWaterInTheBlood     = 0.806
 	BodyWaterMen            = 0.58
 	BodyWaterWomen          = 0.49
-	Metabolism              = 0.017
+	Metabolism              = 0.015
 	GramsToSwedishStandards = 1.2
 )
 
@@ -24,15 +24,19 @@ func New(sd, bwkg, dph float64, g string) *stats {
 	return &stats{sd, bwkg, dph, g, 0.0}
 }
 
-func (s *stats) calc() float64 {
+func (s *stats) Calc() float64 {
 	bodyWater := BodyWaterMen
+	metabolism := Metabolism
 
 	if s.Gender != "male" {
 		bodyWater = BodyWaterWomen
+		metabolism = 0.017
 		s.Gender = "female"
 	}
 
-	return ((BodyWaterInTheBlood * s.StandardDrinks * GramsToSwedishStandards) / (bodyWater * s.BodyWeightKiloGrams)) - (Metabolism * s.DrinkingPeriodHours)
+	s.EstimatedBloodEthanolConcentration = (BodyWaterInTheBlood*s.StandardDrinks*GramsToSwedishStandards)/(bodyWater*s.BodyWeightKiloGrams) - (metabolism * s.DrinkingPeriodHours)
+
+	return s.EstimatedBloodEthanolConcentration
 }
 
 func (s *stats) String() string {
