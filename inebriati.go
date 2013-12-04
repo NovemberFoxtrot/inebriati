@@ -21,11 +21,9 @@ var (
 )
 
 func calc() float64 {
-	var bodyWater float64
+	bodyWater := BodyWaterMen
 
-	if *Gender == "male" {
-		bodyWater = BodyWaterMen
-	} else {
+	if *Gender != "male" {
 		bodyWater = BodyWaterWomen
 		*Gender = "female"
 	}
